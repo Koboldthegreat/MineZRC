@@ -1,5 +1,5 @@
 import requests
-import app
+from mcflask import app
 
 key = app.config['KEY']
 sandbox = 'mail.minezrc.com'
