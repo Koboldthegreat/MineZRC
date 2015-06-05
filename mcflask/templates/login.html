@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% import "_forms.html" as forms %}
+{% block body%}
+<div id="spacer"></div>
+<div id="spacer"></div>
+<form action="/login" method="post">
+  {{ forms.render(loginform) }}
+  <div class="actions">
+    <input type="submit" class="btn btn-primary" value="login">
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,238 @@
+
+.help-inline{
+  color: #FFFFFF;
+  background-color: #EC971F;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  border: .1px solid #e38922;
+  padding: 5px;
+  font-size: 1.1em;
+}
+
+#register #username,
+#register #email,
+#register #password,
+#register #password_confirm
+ {
+ width: 320px;
+ background-color: #fafafa;
+ -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+         border-radius: 3px;
+ border: 1px solid #cccccc;
+ padding: 5px;
+ font-size: 1.1em;
+}
+
+#flash{
+  list-style-type: none;
+  width: 500px;
+  position: fixed;
+  top: 100px;
+  text-align: center !important;
+  left: 50%;
+  margin-left: -250px;
+}
+
+.ribbon {
+  background-color: #a00;
+  overflow: hidden;
+  white-space: nowrap;
+  /* top left corner */
+  position: absolute;
+  left: -25px;
+  top: 130px;
+  /* 45 deg ccw rotation */
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  /* shadow */
+  -webkit-box-shadow: 0 0 10px #888;
+  -moz-box-shadow: 0 0 10px #888;
+box-shadow: 0 0 10px #888;
+}
+.ribbon h4 {
+  border: 1px solid #faa;
+  color: #fff;
+  display: block;
+  margin: 1px 0;
+  padding: 10px 50px;
+  text-align: center;
+  text-decoration: none;
+  /* shadow */
+  text-shadow: 0 0 5px #444;
+}
+
+#serverlist h1{
+  margin-top: 30px;
+  padding: 0 15px;
+}
+
+#serverlist{
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+.serverimg{
+    height: 419px;
+}
+
+.crop {
+    height: 419px;
+    overflow: hidden;
+}
+
+.crop img {
+    height: 419px;
+    margin: -75px 0 0 -100px;
+}
+
+#serverlist button{
+    margin-top: -40px;
+
+
+}
+
+.btn, .help-inline{
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#spacer {height: 80px;}
+
+.navbar-fixed-top .navbar-brand {
+
+    padding: 0 15px;
+
+}
+
+.navbar-brand img{
+    height: 100%;
+}
+
+.homepagelogo{
+    max-width: 600px;
+    width: 100%;
+    padding: 5px;
+}
+
+#homepagestart {
+  margin-top: 20vh;
+}
+
+.username{
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pixelated {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: pixelated;
+}
+
+.headimage{
+    width : 350px;
+    height: 350px;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.text-right
+{
+    text-align: right !important;
+}
+
+.text-center
+{
+    text-align: center !important;
+}
+
+.text-left
+{
+    text-align: left !important;
+}
+
+.center
+{
+    margin-left: auto;
+    margin-right:auto;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+
+}
+
+h1, h2, h3, h4{font-family: 'Montserrat', sans-serif;
+    }
+h1, h2, {    text-transform: uppercase;}
+
+#staff {
+    border:10px solid #E6E6E6;
+    box-shadow: 2px 3px 10px #888888;
+    margin-bottom: 10px;
+}
+
+.jumbotron {
+  background-position: left top;
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  background-attachment: fixed;
+  min-height: 750px;
+  height: 100vh;
+
+
+}
+
+
+
+.transparent {
+  background:rgba(255,255,255,0.5);
+  border-radius: 25px;
+  padding: 20px;
+}
+
+
+.hometitle {
+ margin: 10px;
+ text-shadow: 2px 3px 10px #888888;
+ text-align: center;
+}
+
+.hometext {
+ text-shadow: 0px 3px 10px #888888;
+}
+
+.playersonline {
+        color: yellow;
+}
+
+#account .btn{
+	margin-top: 5px;
+}
+
+#account form{
+	padding-bottom: 0px;
+}
+
+#account {
+	padding: 10px;
+}
+
+.ui-widget-content {
+    color: black;
+
+}
+
+.ui-widget {
+  font-family: "Open Sans", sans-serif;
+    font-size: 1.1em;
+}

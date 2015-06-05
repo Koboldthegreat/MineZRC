@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>WebGL 3D model viewer using three.js</title>
+  <script src="{{ url_for('static', filename='3dviewer/three.js') }}"></script>
+  <script src="{{ url_for('static', filename='3dviewer/TrackballControls.js') }}"></script>
+  <script src="{{ url_for('static', filename='3dviewer/OBJLoader.js') }}"></script>
+  <script src="{{ url_for('static', filename='3dviewer/Detector.js') }}"></script>
+  <link href="{{ url_for('static', filename='bootstrap.css') }}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+   <link href="{{ url_for('static', filename='custom.css') }}" rel="stylesheet">
+   <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+	<div id=3dviewer class="col-xs-4">
+	</div>
+	<div class="col-xs-6" style="padding-left: 27px;">
+			<h4 style="display: inline-block;">Username: <span class="label label-success" style="display: inline-block;">{{player.name}}</span></h4>
+			<h4 style="display: inline-block;">Minecraft Name: <span class="label label-success" style="display: inline-block;">{{player.mcname}}</span> </h4>
+			<h4 style="display: inline-block;">Ranking:  <span class="label label-success" style="display: inline-block;">{{ player.ranking }}</span></h4>
+	</div>
+<script>
+
+
+
+
+var container;
+var camera, scene, renderer, object;
+var mouseX = 0, mouseY = 0;
+
+var windowHalfX = 400 / 2;
+var windowHalfY = 300 / 2;
+
+var viewerwidth = 200;
+var viewerheight = 300;
+
+
+var objectloaded = false;
+
+init();
+animate();
+
+/*** Initialize ***/
+function init() {
+  // This <div> will host the canvas for our scene.
+  container = document.createElement( 'div' );
+  document.getElementById("3dviewer").appendChild( container );
+
+  // You can adjust the cameras distance and set the FOV to something
+  // different than 45°. The last two values set the clippling plane.
+  camera = new THREE.PerspectiveCamera( 45, viewerwidth / viewerheight, 1, 2000 );
+  camera.position.z = 3*30;
+  camera.position.y = 1.5*30;
+  camera.position.x = -1*30;
+
+  // These variables set the camera behaviour and sensitivity.
+  // controls = new THREE.TrackballControls( camera );
+  // controls.rotateSpeed = 10;
+  //controls.zoomSpeed = 10;
+  //controls.panSpeed = 10;
+  //controls.noZoom = false;
+  //controls.noPan = true;
+  //controls.staticMoving = true;
+  //controls.dynamicDampingFactor = 0.3;
+
+  // This is the scene we will add all objects to.
+  scene = new THREE.Scene();
+
+  // You can set the color of the ambient light to any value.
+  // I have chose a completely white light because I want to paint
+  // all the shading into my texture. You propably want something darker.
+  var ambient = new THREE.AmbientLight( 0xffffff );
+  scene.add( ambient );
+
+  // Uncomment these lines to create a simple directional light.
+  var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+  directionalLight.position.set( 3*30, 1.5*30, -1*30 ).normalize();
+  scene.add( directionalLight );
+
+  /*** Texture Loading ***/
+  var manager = new THREE.LoadingManager();
+  manager.onProgress = function ( item, loaded, total ) {
+    console.log( item, loaded, total );
+  };
+  var texture = new THREE.Texture();
+  var loader = new THREE.ImageLoader( manager );
+
+  // You can set the texture properties in this function.
+  // The string has to be the path to your texture file.
+  loader.load( '{{ url_for('static', filename=skinurl) }}', function ( image ) {
+    texture.image = image;
+    texture.needsUpdate = true;
+    // I wanted a nearest neighbour filtering for my low-poly character,
+    // so that every pixel is crips and sharp. You can delete this lines
+    // if have a larger texture and want a smooth linear filter.
+    texture.magFilter = THREE.NearestFilter;
+    texture.minFilter = THREE.NearestMipMapLinearFilter;
+    renderer.render(scene, camera);
+  } );
+
+  /*** OBJ Loading ***/
+  var loader = new THREE.OBJLoader( manager );
+
+  // As soon as the OBJ has been loaded this function looks for a mesh
+  // inside the data and applies the texture to it.
+  loader.load( '{{ url_for('static', filename='3dviewer/player3.obj') }}', function ( event ) {
+    object = event;
+    object.traverse( function ( child ) {
+      if ( child instanceof THREE.Mesh ) {
+        child.material.map = texture;
+      }
+    } );
+
+    // My initial model was too small, so I scaled it upwards.
+
+
+    // You can change the position of the object, so that it is not
+    // centered in the view and leaves some space for overlay text.
+    object.scale.x = 30;
+    object.scale.y = 30;
+    object.scale.z = 30;
+    object.position.y -= 1.5*30;
+	scene.add(object);
+	animate();
+    objectloaded = true;
+  });
+
+  // We set the renderer to the size of the window and
+  // append a canvas to our HTML page.
+  renderer = new THREE.WebGLRenderer();
+  renderer.setClearColor( 0xffffff, 1 );
+  renderer.setSize( viewerwidth, viewerheight );
+  container.appendChild( renderer.domElement );
+
+
+}
+
+
+
+
+/*** The Loop ***/
+function animate() {
+   //object.rotation.x += .04;
+   object.rotation.y += .03;
+
+  requestAnimationFrame( animate );
+
+  // This function calls itself on every frame. You can for example change
+  // the objects rotation on every call to create a turntable animation.
+
+  // On every frame we need to calculate the new camera position
+  // and have it look exactly at the center of our scene.
+
+  camera.rotation.x += ( mouseX - camera.position.x ) * .05;
+				//camera.position.y += ( - mouseY - camera.position.y ) * .001;
+
+
+  camera.lookAt(scene.position);
+
+  renderer.render(scene, camera);
+
+}
+
+ </script>
+
+
+</body>
+</html>

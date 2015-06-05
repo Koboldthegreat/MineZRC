@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+
+
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+
+    <div class="jumbotron " id="homepage" style="background: url({{background}});
+         background-position: left top;
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  background-attachment: fixed;
+
+    ">
+      <div class="container transparent wow fadeIn" data-wow-delay=".20s" id="homepagestart">
+        <h1 class ="hometitle"><img  class="homepagelogo" src="{{ url_for('static', filename='img/logo.png') }}" alt="{{ config['SITENAME' ]}}"</h1>
+
+        <p class="hometext">{{config['SLOGAN' ]}}</p>
+        <h2 class="hometitle">Players online: <strong> {{ status[2] }} / {{ status[3] }}</strong></h2>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow=" {{ status[2] }}" aria-valuemin="0" aria-valuemax="{{ status[3] }}" style="width: {{ barWidth }}%;">
+                <span class="sr-only">{{barwidth}}%</span>
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-md-4 ">
+
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-primary btn-lg text-center btn-block wow rubberBand" data-wow-delay="1s" href="/register" role="button" onClick="copyToClipboard('{{config['URL' ]}}')">Join MineZRC»</a>
+       </div>
+        <div class="col-md-4">
+
+        </div>
+      </div>
+
+
+      </div>
+    </div>
+    <hr>
+    <div class="container">
+        <h1>NEWS</h1>
+
+    <div class="row">
+        {% for entry in entries %}
+            <div class="col-md-4 ">
+            <h2>{{ entry.title }}</h2>
+            <p>{{ entry.text|safe }}</p>
+            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div>
+        {% else %}
+            <!-- no posts here so far -->
+            <li><em>If no news is good news, is all news bad news?</em>
+        {% endfor %}
+
+    {% if session.logged_in %}
+
+  {% from "_formhelpers.html" import render_field %}
+    <form action="{{ url_for('add_entry') }}" method=post id=add-entry role="form">
+  <dl class="form-group">
+    {{ render_field(form.title) }}
+    {{ render_field(form.text) }}
+
+  <button type=submit class = "btn btn-default" value=Post! id=post>
+  </dl>
+  </form>
+  {% endif %}
+  <ul id=entries>
+
+  </ul>
+
+
+
+      <hr>
+      <h1>THE STAFF</h1>
+      <div class="row">
+      {% for user in moderators %}
+
+                <div class="col-md-4 wow fadeInUp" data-wow-delay=".20s" data-wow-offset="20">
+                    <h2 class="text-center">{{user.ranking}}</h2>
+                    <a data-toggle="modal" data-target="#modal{{user.mcname}}" style="cursor: pointer">
+                      <img src="{{ user.getHead() }}" class="img-circle center center-block" id ="staff" alt="{{user.mcname}}"></a
+                    <p><button type="button" class="btn btn-default btn-lg center-block username" data-toggle="modal" data-target="#modal{{user.mcname}}">
+                        {{user.mcname}}
+                    </button></p>
+                </div>
+
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="modal{{user.mcname}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="width: 600px;">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title capitalize" id="myModalLabel ">{{user.mcname}}</h4>
+				</div>
+			<div class="modal-body">
+        <div class="">
+
+
+
+		</div >
+			<div id="viewer{{user.mcname}}">
+
+            </div>
+
+		</div>
+
+			</div>
+		</div>
+		</div>
+
+       <script>
+            $('#modal{{user.mcname}}').on('shown.bs.modal', function () {
+                $( "#viewer{{user.mcname}}" ).append( '<iframe id="ifrviewer" src="user/{{user.mcname}}" width="570" height="300" scrolling="no"  style="border:none"></iframe>' );
+            })
+
+            $('#modal{{user.mcname}}').on('hidden.bs.modal', function () {
+                $( "#ifrviewer" ).remove();
+            })
+
+        </script>
+
+
+      {% endfor %}
+      </div>
+
+
+
+
+
+{% endblock %}

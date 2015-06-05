@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+  
+  {% from "_formhelpers.html" import render_field %}
+    <form action="{{ url_for('add_entry') }}" method=post id=add-entry>
+  <dl>
+    {{ render_field(form.title) }}
+    {{ render_field(form.text) }}
+  
+  <input type=submit value=Post! id=post>
+  </dl>
+  </form>
+  {% endif %}
+  <ul id=entries>
+  {% for entry in entries %}
+    <li><h2 id=title >{{ entry.title }}</h2>{{ entry.text|safe }}
+  {% else %}
+    <li><em>Unbelievable.  No posts here so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}

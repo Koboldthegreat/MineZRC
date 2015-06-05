@@ -1,0 +1,220 @@
+{% import "_forms.html" as forms %}
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://getbootstrap.com/examples/jumbotron/ -->
+<html lang="en">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="The Official MineZRC site">
+    <meta name="author" content="Koboldthegreat">
+    <link rel="icon" href="favicon.ico">
+
+    <title>{{config['SITENAME' ]}} - Home</title>
+
+    <link href="{{ url_for('static', filename='scrolling-nav.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='animate.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery.easing.min.js')}}"></script>
+
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap.css') }}" rel="stylesheet">
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='custom.css') }}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{{ url_for('static', filename='ie-emulation-modes-warning.js') }}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header ">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/logosmall.png') }}" alt="{{ config['SITENAME' ]}}"></img></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="icon-bar" href="#page-top"></a>
+                    </li>
+                    <li {% if page == 'home' %} class="active" {% endif %}><a href="/"><i class="fa fa-home"></i> Home</a>
+                            </li>
+                    <li>
+                    <li {% if page == 'play' %} class="active" {% endif %}><a href="play"><i class="fa fa-gamepad"></i> Play</a>
+                            </li>
+                    <li>
+                    <li {% if page == 'forum' %} class="active" {% endif %}><a href="forum"><i class="fa fa-comments"></i> Forum</a>
+                            </li>
+                    <li>
+                    <li {% if page == 'shop' %} class="active" {% endif %}><a href="http://store.minezrc.com"><i class="fa fa-shopping-cart"></i> Shop</a>
+                            </li>
+                    <li>
+
+
+                </ul>
+
+
+        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+																	{% if session.usermcname %}
+																	<img class = "center-block" src="https://minotar.net/avatar/{{session.usermcname}}/25.png" style = "float:left; margin:-2px; margin-right:5px;">
+																<strong> {{session.usermcname}} </strong> <b class="caret"></b></a>
+																	<ul class="dropdown-menu" role="menu" id="account">
+	                                    <li>
+																					<img class = "center-block" src="https://minotar.net/avatar/{{session.usermcname}}/110.png">
+																					<a href="/logout" class="btn btn-primary" style="color: white;">Logout</a>
+	                                        <a href="/register" class="btn btn-default">Settings</a>
+
+	                                    </li>
+
+	                                    </li>
+
+	                                </ul>
+																	{% else %}
+																	<i class="fa fa-user">
+																</i> Account <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" id="account">
+                                    <li>
+                                    <form action="/login" method="post">
+																				{{ forms.render(loginform) }}
+																				<input type="submit" class="btn btn-primary" value="Login">
+                                        <a href="/register" class="btn btn-default">Register</a>
+                                    </form>
+                                    </li>
+
+                                    </li>
+
+                                </ul>
+																{% endif %}
+                            </li>
+                <button class="btn btn-info navbar-btn navbar-right hidden-sm hidden-xs" onClick="copyToClipboard('{{config['URL' ]}}')">IP: {{config['URL' ]}}</button>
+
+
+        </div><!--/.navbar-collapse -->
+        </div>
+        </div>
+
+    </nav>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+		{% with messages = get_flashed_messages(category_filter=["success"]) %}
+  	{% if messages %}
+
+    	{% for message in messages %}
+			<div class="alert alert-success" id="flash">
+			<a href="#" class="close" data-dismiss="alert">&times;</a>
+			<strong>Success! </strong>{{ message }}
+			</div>
+    	{% endfor %}
+
+  	{% endif %}
+	{% endwith %}
+
+	{% with messages = get_flashed_messages(category_filter=["error"]) %}
+	{% if messages %}
+
+		{% for message in messages %}
+		<div class="alert alert-danger" id="flash">
+		<a href="#" class="close" data-dismiss="alert">&times;</a>
+		<strong>Error! </strong>{{ message }}
+		</div>
+		{% endfor %}
+
+	{% endif %}
+{% endwith %}
+
+{% with messages = get_flashed_messages(category_filter=["warning"]) %}
+{% if messages %}
+
+	{% for message in messages %}
+	<div class="alert alert-warning" id="flash">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<strong>Warning! </strong>{{ message }}
+	</div>
+	{% endfor %}
+
+{% endif %}
+{% endwith %}
+
+{% with messages = get_flashed_messages(category_filter=["info"]) %}
+{% if messages %}
+
+	{% for message in messages %}
+	<div class="alert alert-info" id="flash">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<strong>Note! </strong>{{ message }}
+	</div>
+	{% endfor %}
+
+{% endif %}
+{% endwith %}
+
+
+
+
+
+
+
+        {% block body %}
+	{% endblock %}
+
+      <hr>
+
+      <footer>
+        <h4> © <a href="">koboldthegreat</a></h4>
+      </footer>
+
+      </div>
+	</div>
+	</div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ url_for('static', filename='ie10-viewport-bug-workaround.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='scrolling-nav.js')}}"></script>
+
+    <script src="{{ url_for('static', filename='wow.min.js')}}"></script>
+	<script>
+ new WOW().init();
+
+ function copyToClipboard(text) {
+  window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+}
+</script>
+
+
+	</body>
+	</html>

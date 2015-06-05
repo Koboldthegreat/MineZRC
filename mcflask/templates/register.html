@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% import "_forms.html" as forms %}
+{% block body%}
+
+<div class="jumbotron" id="homepage" style="background: url({{background}});
+     background-position: left top;
+background-size: cover;
+background-repeat: no-repeat, repeat;
+background-attachment: fixed;
+
+">
+  <div class="container" id="homepagestart" style="width: 800px;">
+    <div class="panel panel-info" >
+
+      <div class="panel-heading">
+      <div class="panel-title"> <h3> <i class="fa fa-users"></i> Join the MineZRC community! </h3></div>
+      </div>
+      <div class="panel-body" style="	background-image: url('http://derekframpton.com/Themes/minecraft_theme_ok/images/munecos.png');
+        background-repeat: no-repeat;
+        background-position: 80% 20%;">
+    <form id = "register" action="/register" method="post">
+      {{ forms.render(registerform) }}
+      <div class="actions">
+        <input type="submit" class="btn btn-primary btn-lg" value="Join the club">
+      </div>
+    </form>
+    </div
+    </div>
+    </div>
+
+  </div>
+
+
+  </div>
+
+
+
+
+{% endblock %}
