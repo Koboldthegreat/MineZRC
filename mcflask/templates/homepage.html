@@ -8,18 +8,18 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
-    <div class="jumbotron " id="homepage" style="background: url({{background}});
+    <div class="jumbotron" id="background" style="background: url({{background}});
          background-position: left top;
   background-size: cover;
   background-repeat: no-repeat, repeat;
   background-attachment: fixed;
 
     ">
-      <div class="container transparent wow fadeIn" data-wow-delay=".20s" id="homepagestart">
-        <h1 class ="hometitle"><img  class="homepagelogo" src="{{ url_for('static', filename='img/logo.png') }}" alt="{{ config['SITENAME' ]}}"</h1>
+      <div class="container jumbotron wow fadeIn" data-wow-delay=".20s" id="home-start">
+        <h1 class ="" id="home-title"><img  id="home-logo" src="{{ url_for('static', filename='img/themes/'+config['THEME']+'/logo.png') }}" alt="{{ config['SITENAME' ]}}"</h1>
 
-        <p class="hometext">{{config['SLOGAN' ]}}</p>
-        <h2 class="hometitle">Players online: <strong> {{ status[2] }} / {{ status[3] }}</strong></h2>
+        <p class="" id="home-slogan">{{config['SLOGAN' ]}}</p>
+        <h2 class="" id="home-title">Players online: <strong> {{ status[2] }} / {{ status[3] }}</strong></h2>
 
         <div class="progress">
             <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow=" {{ status[2] }}" aria-valuemin="0" aria-valuemax="{{ status[3] }}" style="width: {{ barWidth }}%;">
@@ -41,9 +41,10 @@
 
       </div>
     </div>
-    <hr>
+
+
     <div class="container">
-        <h1>NEWS</h1>
+      <h1>NEWS</h1>
 
     <div class="row">
         {% for entry in entries %}
@@ -72,6 +73,7 @@
   <ul id=entries>
 
   </ul>
+</div>
 
 
 
@@ -80,10 +82,10 @@
       <div class="row">
       {% for user in moderators %}
 
-                <div class="col-md-4 wow fadeInUp" data-wow-delay=".20s" data-wow-offset="20">
+                <div class="col-md-4" data-wow-delay=".20s" data-wow-offset="20">
                     <h2 class="text-center">{{user.ranking}}</h2>
                     <a data-toggle="modal" data-target="#modal{{user.mcname}}" style="cursor: pointer">
-                      <img src="{{ user.getHead() }}" class="img-circle center center-block" id ="staff" alt="{{user.mcname}}"></a
+                      <img src="{{ user.getHead() }}" class="img-circle center center-block" id ="home-staff" alt="{{user.mcname}}"></a
                     <p><button type="button" class="btn btn-default btn-lg center-block username" data-toggle="modal" data-target="#modal{{user.mcname}}">
                         {{user.mcname}}
                     </button></p>
@@ -100,11 +102,6 @@
 				<h4 class="modal-title capitalize" id="myModalLabel ">{{user.mcname}}</h4>
 				</div>
 			<div class="modal-body">
-        <div class="">
-
-
-
-		</div >
 			<div id="viewer{{user.mcname}}">
 
             </div>
@@ -113,7 +110,8 @@
 
 			</div>
 		</div>
-		</div>
+  </div>
+
 
        <script>
             $('#modal{{user.mcname}}').on('shown.bs.modal', function () {
@@ -126,9 +124,9 @@
 
         </script>
 
-
       {% endfor %}
-      </div>
+</div>
+
 
 
 

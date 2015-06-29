@@ -12,28 +12,28 @@
     <meta name="author" content="Koboldthegreat">
     <link rel="icon" href="favicon.ico">
 
-    <title>{{config['SITENAME' ]}} - Home</title>
+    <title>{{config['SITENAME']}} - Home</title>
 
     <link href="{{ url_for('static', filename='scrolling-nav.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='animate.css') }}" rel="stylesheet">
-    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='jquery.easing.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.easing.min.js')}}"></script>
 
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ url_for('static', filename='bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='themes/'+config['THEME']+'/bootstrap.css') }}" rel="stylesheet">
 
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link href="{{ url_for('static', filename='custom.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='themes/'+config['THEME']+'/custom.css') }}" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="{{ url_for('static', filename='ie-emulation-modes-warning.js') }}"></script>
+    <!--[if lt IE 9]><script src="../../assetsjs/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{{ url_for('static', filename='js/ie-emulation-modes-warning.js') }}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -54,7 +54,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/logosmall.png') }}" alt="{{ config['SITENAME' ]}}"></img></a>
+          <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/themes/'+config['THEME']+'/logosmall.png') }}" alt="{{ config['SITENAME' ]}}"></img></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -81,7 +81,7 @@
 
         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">
 																	{% if session.usermcname %}
 																	<img class = "center-block" src="https://minotar.net/avatar/{{session.usermcname}}/25.png" style = "float:left; margin:-2px; margin-right:5px;">
 																<strong> {{session.usermcname}} </strong> <b class="caret"></b></a>
@@ -101,10 +101,15 @@
 																</i> Account <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu" id="account">
                                     <li>
-                                    <form action="/login" method="post">
-																				{{ forms.render(loginform) }}
+                                    <form id="loginform" action="/login" method="post">
+
+																				{{forms.render(loginform)}}
+
+
 																				<input type="submit" class="btn btn-primary" value="Login">
                                         <a href="/register" class="btn btn-default">Register</a>
+
+
                                     </form>
                                     </li>
 
@@ -186,7 +191,7 @@
       <hr>
 
       <footer>
-        <h4> © <a href="">koboldthegreat</a></h4>
+        <h4> © Created with <i class="fa fa-heart"></i> by <a href="https://github.com/Koboldthegreat/">KoboldTheGreat</a></h4>
       </footer>
 
       </div>
@@ -199,14 +204,14 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{{ url_for('static', filename='ie10-viewport-bug-workaround.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
 
-    <script src="{{ url_for('static', filename='scrolling-nav.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/scrolling-nav.js')}}"></script>
 
-    <script src="{{ url_for('static', filename='wow.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js')}}"></script>
 	<script>
  new WOW().init();
 

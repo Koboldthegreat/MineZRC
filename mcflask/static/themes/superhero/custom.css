@@ -96,7 +96,7 @@ box-shadow: 0 0 10px #888;
 
 }
 
-.btn, .help-inline{
+{
     border-radius: 3px;
     font-family: 'Montserrat', sans-serif;
 }
@@ -113,15 +113,7 @@ box-shadow: 0 0 10px #888;
     height: 100%;
 }
 
-.homepagelogo{
-    max-width: 600px;
-    width: 100%;
-    padding: 5px;
-}
 
-#homepagestart {
-  margin-top: 20vh;
-}
 
 .username{
     font-weight: bold;
@@ -167,21 +159,16 @@ box-shadow: 0 0 10px #888;
 }
 
 body {
-	font-family: "Open Sans", sans-serif;
-
+	font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-h1, h2, h3, h4{font-family: 'Montserrat', sans-serif;
+h1, h2, h3, h4{;
     }
 h1, h2, {    text-transform: uppercase;}
 
-#staff {
-    border:10px solid #E6E6E6;
-    box-shadow: 2px 3px 10px #888888;
-    margin-bottom: 10px;
-}
 
-.jumbotron {
+
+#background {
   background-position: left top;
   background-size: cover;
   background-repeat: no-repeat, repeat;
@@ -194,21 +181,32 @@ h1, h2, {    text-transform: uppercase;}
 
 
 
-.transparent {
-  background:rgba(255,255,255,0.5);
+#home-title {
+ margin: 10px;
+ text-align: center;
+}
+
+#home-slogan, #home-title {
+  text-shadow: 2px 3px 10px #151A20;
+}
+
+#home-logo{
+    max-width: 600px;
+    width: 100%;
+    padding: 5px;
+}
+
+#home-start {
+  background-color: #2B3E50;
+  margin-top: 20vh;
   border-radius: 25px;
   padding: 20px;
 }
 
-
-.hometitle {
- margin: 10px;
- text-shadow: 2px 3px 10px #888888;
- text-align: center;
-}
-
-.hometext {
- text-shadow: 0px 3px 10px #888888;
+#home-staff {
+    border: 10px solid #485563;
+    box-shadow: 2px 3px 10px #262B30;
+    margin-bottom: 10px;
 }
 
 .playersonline {
@@ -235,4 +233,39 @@ h1, h2, {    text-transform: uppercase;}
 .ui-widget {
   font-family: "Open Sans", sans-serif;
     font-size: 1.1em;
+}
+
+
+::-webkit-input-placeholder {
+   text-transform: capitalize;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-transform: capitalize;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-transform: capitalize;
+}
+
+:-ms-input-placeholder {
+   text-transform: capitalize;
+}
+
+/*
+input
+ {
+  border: 0px solid #ccc;
+  -moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+  border-radius: 0px;;
+
+  outline: 0;
+  -webkit-appearance: none;
+
+}
+*/
+
+#loginform {
+    width: 200px;
 }

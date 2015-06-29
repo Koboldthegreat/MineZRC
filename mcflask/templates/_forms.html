@@ -9,9 +9,9 @@
     {{ field.label }}
     <div class="input form-group">
       {% if field.name == "body" %}
-        {{ field(rows=10, cols=40) }}
+        {{ field(rows=10, cols=40, class="form-control",placeholder=field.name) }}
       {% else %}
-        {{ field() }}
+        {{ field(class="form-control",placeholder=field.name) }}
       {% endif %}
       {% if field.errors or field.help_text %}
         <span class="help-inline">

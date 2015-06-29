@@ -2,11 +2,6 @@ from flask import Flask
 from flask.ext.mongoengine import MongoEngine
 from pymongo import read_preferences
 
-from flask_mail import Mail, Message
-
-
-
-
 
 
 
@@ -20,8 +15,6 @@ app.config.from_pyfile('config.ini')
 app.config["MONGODB_SETTINGS"] = {'db' : app.config["DATABASENAME"], 'read_preference': read_preferences.ReadPreference.PRIMARY}
 
 debug = True
-
-mail = Mail(app)
 
 #create database
 db = MongoEngine(app)

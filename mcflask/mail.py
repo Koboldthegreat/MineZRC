@@ -2,15 +2,15 @@ import requests
 from mcflask import app
 
 key = app.config['KEY']
-sandbox = 'mail.minezrc.com'
+sandbox = app.config['MAIL_SANDBOX']
 
 from mcflask import debug
 
 def sendMail(user, recipient, subject, text):
 
-    request_url = 'https://api.mailgun.net/v3/mail.minezrc.com/messages'
+    request_url = 'https://api.mailgun.net/v3/'+sandbox+ '/messages'
     request = requests.post(request_url, auth=('api', key), data={
-        'from': user+'@mail.minezrc.com',
+        'from': user+'@'+'sandbox',
         'to': recipient,
         'subject': subject,
         'text': text
