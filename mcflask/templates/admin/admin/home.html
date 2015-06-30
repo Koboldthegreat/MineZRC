@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+<div id="spacer"></div>
+
+
+<div class="container">
+<h1>Admin Page</h1>
+
+<hr>
+
+
+  <div class="col-lg-3"><h2><i class="fa fa-newspaper-o"></i> Posts:</h2></div>
+  <div class="col-lg-5">
+    <h2>
+      <div class="btn-group" role="group" aria-label="...">
+          <a href= "/admin/post/add"class="btn btn-success"> <i class="fa fa-plus"></i> Add</a>
+          <a href= "#"class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+      </div>
+  </h2>
+  </div>
+  <table  class="table table-bordered table-striped">
+    <thead>
+      <th>Title</th>
+      <th>Created</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+      <tr>
+        <th><a href="#">{{ post.title }}</a></th>
+        <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+        <td>
+      <div class="btn-group" role="group" aria-label="...">
+        <a href="" class="btn btn-warning"> <i class="fa fa-pencil"></i> Edit</a>
+        <a href=""class="btn btn-danger"><i class="fa fa-times"></i> Remove</a>
+      </div>
+    </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+
+  <hr>
+
+
+  <div class="col-lg-3"><h2> <i class="fa fa-users"></i> Users:</h2></div>
+  <div class="col-lg-5">
+    <h2>
+      <div class="btn-group" role="group" aria-label="...">
+          <a href= "#"class="btn btn-success"> <i class="fa fa-user-plus"></i> Add</a>
+          <a href= "#"class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+      </div>
+  </h2>
+  </div>
+  <div class="col-lg-4">
+    <h2>
+   <div class="input-group">
+     <input type="text" class="form-control" id="usersautocomplete" placeholder="Search for...">
+     <span class="input-group-btn">
+       <button class="btn btn-primary" type="button">Search</button>
+     </span>
+   </div><!-- /input-group -->
+ </div><!-- /.col-lg-6 -->
+ </h2>
+  <table  class="table table-bordered table-striped">
+<thead>
+  <th>McName</th>
+  <th>Role</th>
+  <th>Staff</th>
+  <th>Actions</th>
+  </thead>
+  <tbody>
+  {% for user in users %}
+    <tr>
+      <th><a href="user/{{user.mcname}}">{{ user.mcname }}</a></th>
+      <td>{{ user.ranking }}</td>
+      <td>{%if user.is_staff%}
+        <a href= "user/{{user.mcname}}"class="btn btn-success"> <i class="fa fa-times"></i> Remove from staff</a>
+          {% else %}
+          <a href= "user/{{user.mcname}}"class="btn btn-danger"> <i class="fa fa-plus"></i> Add to staff</a>
+          {% endif %}
+      </td>
+      <td>
+    <div class="btn-group" role="group" aria-label="...">
+      <a href= "user/{{user.mcname}}"class="btn btn-warning"> <i class="fa fa-pencil"></i> Edit</a>
+      <a href="/user/remove/{{user.mcname }} "class="btn btn-danger"><i class="fa fa-user-times"></i> Remove</a>
+    </div>
+  </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+
+</table>
+
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default">1</button>
+  <button type="button" class="btn btn-default">2</button>
+
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+      View
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">10</a></li>
+      <li><a href="#">50</a></li>
+      <li><a href="#">100</a></li>
+      <li><a href="#">All</a></li>
+    </ul>
+  </div>
+
+
+
+</div>
+
+</div>
+
+<div id="spacer"></div>
+<div id="spacer"></div>
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+<script>
+$(function() {
+  var availableUsers = [
+    {%for user in users%}
+    "{{user.mcname}}",
+
+
+    {% endfor %}
+  ];
+$("#usersautocomplete").autocomplete({
+    source: availableUsers
+
+  });
+});
+</script>
+
+{% endblock %}

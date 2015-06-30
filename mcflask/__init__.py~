@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 app.secret_key = 'W\x86l,l\xb7Q\x19go\x9d`3{\x8etw\xea;>\x0bf\x1c\xf4'
-app.config.from_pyfile('../config.ini')
+app.config.from_pyfile('config.ini')
 app.config["MONGODB_SETTINGS"] = {'db' : app.config["DATABASENAME"], 'read_preference': read_preferences.ReadPreference.PRIMARY}
 
 debug = True

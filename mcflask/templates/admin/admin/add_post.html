@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% import "_forms.html" as forms %}
+
+{% block body %}
+
+
+  <div class="jumbotron" style="background: url({{background}});
+       background-position: left top;
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  background-attachment: fixed;
+
+  ">
+    <div class="container" id="register-start" style="width: 800px;">
+      <div class="panel panel-info" >
+
+        <div class="panel-heading">
+        <div class="panel-title"> <h3> <i class="fa fa-users"></i>
+        {% if create %}
+          Add new Post
+        {% else %}
+          Edit Post
+        {% endif %}</h3></div>
+        </div>
+        <div class="panel-body">
+          <form action="#" method="post">
+            {{ forms.render(form) }}
+            <div class="actions">
+              <input type="submit" class="btn btn-primary" value="Save">
+              <a href="{{ url_for("adminPanel") }}" class="btn btn-secondary">Cancel</a>
+            </div>
+
+          </form>
+      </div>
+      </div>
+
+    </div>
+
+
+    </div>
+{% endblock %}
