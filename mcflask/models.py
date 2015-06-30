@@ -29,10 +29,16 @@ def addServer(servername,displayname, is_new = False,):
         server.save()
         print(servername + " added to servers")
     else:
-        print("Server:" + servername + "already exists")
+        print("Server: " + servername + " already exists")
 
-def addPost():
-    print('post added')
+def addPost(title, author, content, tags = None):
+    posts = Post.objects.all()
+    if not any(post.title == title for post in posts):
+        post = Server(title = title, author = author, tags = tags, content = content)
+        post.save()
+        print(title + " added to posts")
+    else:
+        print("Post with title: " + title + "already exists")
 
 def addUser(ranking, displayname, is_staff = False,email = "Not Set Yet", password = None, confirmed = False, confkey = None):
     mcname = displayname.lower()
@@ -113,9 +119,6 @@ class User(db.Document):
 
 
 
-class Content(db.EmbeddedDocument):
-    text = db.StringField()
-    lang = db.StringField(max_length=3)
 
 class Comment(db.EmbeddedDocument):
     created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
@@ -127,7 +130,7 @@ class Post(db.DynamicDocument):
     title = db.StringField(max_length=120, required=True)
     author = db.ReferenceField(User)
     tags = db.ListField(db.StringField(max_length=30))
-    content = db.EmbeddedDocumentField(Content)
+    content = db.StringField(required = True)
     comments = db.ListField(db.EmbeddedDocumentField('Comment'))
 
     meta = {
@@ -142,6 +145,5 @@ PostForm = model_form(Post)
 def add_post(request):
     form = PostForm(request.POST)
     if request.method == 'POST' and form.validate():
-
         redirect('done')
     return render_template('add_post.html', form=form)

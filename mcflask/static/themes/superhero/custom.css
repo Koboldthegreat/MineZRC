@@ -1,3 +1,6 @@
+.navbar {
+    font-size: 17px;
+}
 
 .help-inline{
   color: #FFFFFF;
@@ -10,19 +13,21 @@
   font-size: 1.1em;
 }
 
+form label{
+  font-size: 15px;
+
+}
+
 #register #username,
 #register #email,
 #register #password,
 #register #password_confirm
  {
  width: 320px;
- background-color: #fafafa;
- -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-         border-radius: 3px;
- border: 1px solid #cccccc;
+
+
  padding: 5px;
- font-size: 1.1em;
+
 }
 
 #flash{
@@ -90,24 +95,7 @@ box-shadow: 0 0 10px #888;
     margin: -75px 0 0 -100px;
 }
 
-#serverlist button{
-    margin-top: -40px;
 
-
-}
-
-{
-    border-radius: 3px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-#spacer {height: 80px;}
-
-.navbar-fixed-top .navbar-brand {
-
-    padding: 0 15px;
-
-}
 
 .navbar-brand img{
     height: 100%;
@@ -213,6 +201,13 @@ h1, h2, {    text-transform: uppercase;}
         color: yellow;
 }
 
+#register-start{
+
+  margin-top: 15vh;
+
+
+}
+
 #account .btn{
 	margin-top: 5px;
 }
@@ -223,6 +218,26 @@ h1, h2, {    text-transform: uppercase;}
 
 #account {
 	padding: 10px;
+}
+
+
+#serverlist button{
+    margin-top: -40px;
+
+
+}
+
+{
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#spacer {height: 80px;}
+
+.navbar-fixed-top .navbar-brand {
+
+    padding: 0 15px;
+
 }
 
 .ui-widget-content {

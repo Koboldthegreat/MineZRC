@@ -13,6 +13,14 @@
 
 
   <div class="col-lg-3"><h2><i class="fa fa-newspaper-o"></i> Posts:</h2></div>
+  <div class="col-lg-5">
+    <h2>
+      <div class="btn-group" role="group" aria-label="...">
+          <a href= "/admin/post/add"class="btn btn-success"> <i class="fa fa-plus"></i> Add</a>
+          <a href= "#"class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+      </div>
+  </h2>
+  </div>
   <table  class="table table-bordered table-striped">
     <thead>
       <th>Title</th>
@@ -22,10 +30,14 @@
     <tbody>
     {% for post in posts %}
       <tr>
-        <th><a href="{{ url_for('admin.edit', slug=post.slug) }}">{{ post.title }}</a></th>
+        <th><a href="#">{{ post.title }}</a></th>
         <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
-        <td><a href="{{ url_for("admin.edit", slug=post.slug) }}" class="btn btn-primary">Edit</a></td>
-        <td><a href="{{ url_for("admin.remove", slug=post.slug) }}" class="btn btn-primary">Remove</a></td>
+        <td>
+      <div class="btn-group" role="group" aria-label="...">
+        <a href="" class="btn btn-warning"> <i class="fa fa-pencil"></i> Edit</a>
+        <a href=""class="btn btn-danger"><i class="fa fa-times"></i> Remove</a>
+      </div>
+    </td>
       </tr>
     {% endfor %}
     </tbody>
@@ -82,9 +94,8 @@
   {% endfor %}
   </tbody>
 
-
-
 </table>
+
 <div class="btn-group" role="group" aria-label="...">
   <button type="button" class="btn btn-default">1</button>
   <button type="button" class="btn btn-default">2</button>
