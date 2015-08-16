@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% import "_forms.html" as forms %}
+{% block body%}
+
+<div class="jumbotron" style="background: url({{background}});
+     background-position: left top;
+background-size: cover;
+background-repeat: no-repeat, repeat;
+background-attachment: fixed;
+
+">
+  <div class="container" id="register-start" style="width: 800px;">
+    <div class="panel panel-info" >
+
+      <div class="panel-heading">
+      <div class="panel-title"> <h3> <i class="fa fa-users"></i> Change {{user.mcname}}'s user settings </h3></div>
+      </div>
+      <div class="panel-body" style="	background-image: url('http://derekframpton.com/Themes/minecraft_theme_ok/images/munecos.png');
+        background-repeat: no-repeat;
+        background-position: 80% 20%;">
+    <form id = "register" action="" method="post">
+      {{ forms.render(form) }}
+      <div class="actions">
+        <input type="submit" class="btn btn-primary btn-lg" value="Save">
+      </div>
+    </form>
+    </div
+    </div>
+    </div>
+
+  </div>
+
+
+  </div>
+
+
+
+
+{% endblock %}

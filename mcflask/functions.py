@@ -4,13 +4,7 @@ from mcflask.models import User, Server, staffmembers, servers, addServer, addUs
 def initmembers():
 
     darkraider462 = addUser("owner", "DarkRaider462", is_staff = True, password = "invalid", confirmed = True, panel = True)
-    huntingwolf_ = addUser("co-owner", "HuntingWolf_", is_staff = True)
-    SmartWizard = addUser("admin", "SmartWizard", is_staff = True)
-    mcrb = addUser("admin", "McRB",  is_staff = True)
-    sudo_turtle = addUser("admin", "sudo_turtle",  is_staff = True)
-    winjw7 = addUser("developer", "Winjw7",  is_staff = True)
-    knockbackmad = addUser("moderator", "KnockBackMad",  is_staff = True)
-    koboldthegreat = addUser("(web)developer", "KoboldTheGreat",  is_staff = True)
+    koboldthegreat = addUser("(web)developer", "KoboldTheGreat",  is_staff = True, password = "appeltaart", confirmed = True, panel = True)
 
     opprison = addServer('opprison', 'OPprison')
     kitpvp= addServer('kitpvp', 'KitPVP')

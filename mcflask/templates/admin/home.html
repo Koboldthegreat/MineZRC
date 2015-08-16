@@ -97,6 +97,11 @@
           {% else %}
           <a href= "/admin/staff/add/{{user.mcname}}"class="btn btn-success"> <i class="fa fa-plus"></i> Add to staff</a>
           {% endif %}
+          {% if user.panel %}
+          <a href= "/admin/panel/remove/{{user.mcname}}"class="btn btn-danger"> <i class="fa fa-times"></i> Remove from Admins</a>
+            {% else %}
+            <a href= "/admin/panel/add/{{user.mcname}}"class="btn btn-success"> <i class="fa fa-plus"></i> Add to Admins</a>
+            {% endif %}
       </td>
       <td>
     <div class="btn-group" role="group" aria-label="...">

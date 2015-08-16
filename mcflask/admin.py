@@ -103,6 +103,35 @@ def adminAddStaff(mcname):
         flash('You have to be logged as admin to access this page ', 'warning')
         return redirect('/')
 
+@app.route('/admin/staff/add/<mcname>')
+def adminAddPanel(mcname):
+    if requires_admin():
+        try:
+            user = User.objects.get(mcname = mcname)
+            user.update(panel = True)
+            flash(u'Added %s to Admins ' % user.mcname, 'warning')
+        except:
+            flash(u'MCname not valid!', 'danger')
+        return redirect(url_for('adminPanel'))
+    else:
+        flash('You have to be logged as admin to access this page ', 'warning')
+        return redirect('/')
+
+@app.route('/admin/panel/remove/<mcname>')
+def adminRemovePanel(mcname):
+    if requires_admin():
+        try:
+            user = User.objects.get(mcname = mcname)
+            user.update(panel = False)
+            flash(u'Removed %s from Admins ' % user.mcname, 'warning')
+        except:
+            flash(u'MCname not valid!', 'danger')
+        return redirect(url_for('adminPanel'))
+    else:
+        flash('You have to be logged as admin to access this page ', 'warning')
+        return redirect('/')
+
+
 @app.route('/admin/staff/remove/<mcname>')
 def adminRemoveStaff(mcname):
     if requires_admin():

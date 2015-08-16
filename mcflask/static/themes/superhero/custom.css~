@@ -1,0 +1,348 @@
+
+.btn-primary{
+	box-shadow: 0px 5px 0px #5CB85C;
+}
+
+.navbar {
+    font-size: 17px;
+}
+
+.help-inline{
+  color: #FFFFFF;
+  background-color: #EC971F;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  border: .1px solid #e38922;
+  padding: 5px;
+  font-size: 1.1em;
+}
+
+form label{
+  font-size: 15px;
+
+}
+
+#register #username,
+#register #email,
+#register #password,
+#register #password_confirm
+ {
+ width: 320px;
+
+
+ padding: 5px;
+
+}
+
+#flash{
+  list-style-type: none;
+  width: 500px;
+  position: fixed;
+  top: 100px;
+  text-align: center !important;
+  left: 50%;
+  margin-left: -250px;
+}
+
+
+
+#serverlist h1{
+  margin-top: 30px;
+  padding: 0 15px;
+}
+
+#serverlist{
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+.serverimg{
+    height: 419px;
+}
+
+.crop {
+    height: 419px;
+    overflow: hidden;
+}
+
+.crop img {
+    height: 419px;
+    margin: -75px 0 0 -100px;
+}
+
+
+
+.navbar-brand img{
+    height: 100%;
+}
+
+
+
+.username{
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pixelated {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: pixelated;
+}
+
+.headimage{
+    width : 350px;
+    height: 350px;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.text-right
+{
+    text-align: right !important;
+}
+
+.text-center
+{
+    text-align: center !important;
+}
+
+.text-left
+{
+    text-align: left !important;
+}
+
+.center
+{
+    margin-left: auto;
+    margin-right:auto;
+}
+
+body {
+	font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+h1, h2, h3, h4{;
+    }
+h1, h2, {    text-transform: uppercase;}
+
+
+
+#background {
+  background-position: left top;
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  background-attachment: fixed;
+  min-height: 750px;
+  height: 100vh;
+
+
+}
+
+
+
+#home-title {
+ margin: 10px;
+ text-align: center;
+}
+
+#home-slogan, #home-title {
+  text-shadow: 2px 3px 10px #151A20;
+}
+
+#home-logo{
+    max-width: 600px;
+    width: 100%;
+    padding: 5px;
+}
+
+#home-start {
+  background-color: #2B3E50;
+  margin-top: 20vh;
+  padding: 20px;
+  border-bottom: 10px solid #5CB85C;
+}
+
+#home-staff {
+    border: 10px solid #485563;
+    box-shadow: 2px 3px 10px #262B30;
+    margin-bottom: 10px;
+}
+
+.playersonline {
+        color: yellow;
+}
+
+#register-start{
+
+  margin-top: 15vh;
+
+
+}
+
+#addPost #content{
+	resize: vertical;
+	overflow: auto;
+}
+
+#account .btn{
+	margin-top: 5px;
+}
+
+#account form{
+	padding-bottom: 0px;
+}
+
+#account {
+	padding: 10px;
+}
+
+
+#serverlist button{
+    margin-top: -40px;
+    
+
+
+}
+
+{
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#spacer {height: 80px;}
+
+#content {
+  padding:15px;
+}
+#content img {
+  width: 100%;
+}
+
+#home-news img{
+    width: 100%;
+}
+
+#menu-ip{
+  text-transform: uppercase;
+
+}
+
+
+.navbar-fixed-top .navbar-brand {
+
+    padding: 0 15px;
+
+}
+
+.ui-widget-content {
+    color: black;
+
+}
+
+.ui-widget {
+  font-family: "Open Sans", sans-serif;
+    font-size: 1.1em;
+}
+
+
+.ribbon {
+  background-color: #a00;
+  overflow: hidden;
+  white-space: nowrap;
+  /* top left corner */
+  position: absolute;
+  left: -25px;
+  top: 130px;
+  /* 45 deg ccw rotation */
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  /* shadow */
+  -webkit-box-shadow: 0 0 20px #2b2727;
+  -moz-box-shadow: 0 0 20px #2b2727;
+box-shadow: 0 0 20px #2b2727;
+}
+.ribbon h4 {
+  border: 1px solid #faa;
+  color: #fff;
+  display: block;
+  margin: 1px 0;
+  padding: 10px 50px;
+  text-align: center;
+  text-decoration: none;
+  /* shadow */
+  text-shadow: 0 0 5px #444;
+}
+
+.userribbon {
+  background-color: #a00;
+  overflow: hidden;
+  white-space: nowrap;
+  /* top left corner */
+  position: absolute;
+  left: 5px;
+  top: 120px;
+  /* 45 deg ccw rotation */
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  /* shadow */
+  -webkit-box-shadow: 0 0 20px #2b2727;
+  -moz-box-shadow: 0 0 20px #2b2727;
+box-shadow: 0 0 20px #2b2727;
+}
+
+.userribbon h4 {
+  border: 1px solid #faa;
+  color: #fff;
+  display: block;
+  margin: 1px 0;
+  padding: 5px 45px;
+  text-align: center;
+  text-decoration: none;
+  /* shadow */
+  text-shadow: 0 0 10px #1c1919;
+}
+
+::-webkit-input-placeholder {
+   text-transform: capitalize;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-transform: capitalize;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-transform: capitalize;
+}
+
+:-ms-input-placeholder {
+   text-transform: capitalize;
+}
+
+/*
+input
+ {
+  border: 0px solid #ccc;
+  -moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+  border-radius: 0px;;
+
+  outline: 0;
+  -webkit-appearance: none;
+
+}
+*/
+
+#loginform {
+    width: 200px;
+}

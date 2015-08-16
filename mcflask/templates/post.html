@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% import "_forms.html" as forms %}
+{% block body%}
+
+<div class="jumbotron" style="background: url({{background}});
+     background-position: left top;
+background-size: cover;
+background-repeat: no-repeat, repeat;
+background-attachment: fixed; ;
+
+">
+  <div class="container" id="post" style="width: 1000px; margin-top: 80px">
+    <div class="panel panel-info" >
+
+      <div class="panel-heading">
+      <div class="panel-title" >
+        <img class = "center-block" src="https://minotar.net/avatar/{{post.author.mcname}}/50.png" style = "float:right; margin-top:-12px; margin-right:5px;">
+        <a href="#" class = "center-block h4" style="margin: auto 10px; float: right;">{{post.author.mcname}}</a>
+        <h3 style=""><i class="fa fa-file-text-o"></i> {{ post.title }}</h3>
+      </div>
+      </div>
+
+      <div class="panel-body" style="	background-image: ;
+        background-repeat: no-repeat;
+        background-position: 80% 20%;">
+      <div id="content" style="">
+        {{ post.content|safe}}
+      </div>
+      <button class="btn btn-primary">Comment</button>
+      <button class="btn btn-success"><i class="fa fa-thumbs-o-up"></i></button>
+      <button class="btn btn-danger"><i class="fa fa-thumbs-o-down"></i></button>
+    </div
+    </div>
+    </div>
+
+  </div>
+
+
+  </div>
+
+
+
+
+{% endblock %}
