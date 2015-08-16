@@ -103,7 +103,7 @@ def adminAddStaff(mcname):
         flash('You have to be logged as admin to access this page ', 'warning')
         return redirect('/')
 
-@app.route('/admin/admin/add/<mcname>')
+@app.route('/admin/panel/add/<mcname>')
 def adminAddAdmin(mcname):
     if requires_admin():
         try:
@@ -117,7 +117,7 @@ def adminAddAdmin(mcname):
         flash('You have to be logged as admin to access this page ', 'warning')
         return redirect('/')
 
-@app.route('/admin/admin/remove/<mcname>')
+@app.route('/admin/panel/remove/<mcname>')
 def adminRemoveAdmin(mcname):
     if requires_admin():
         try:
