@@ -10,7 +10,7 @@ from mcflask.encrypt import encryptPassword, checkPassword
 
 from mcflask.mail import sendMail
 
-from mcflask import debug
+from mcflask import debug, app
 
 import os,binascii
 
@@ -50,7 +50,7 @@ class LoginForm(Form):
 
         if user.confirmed:
             self.confirmed = True
-            
+
 
         self.user = user
         return True
@@ -90,7 +90,7 @@ class RegisterForm(Form):
 
                 addUser("Registered User", self.username.data, is_staff = False, password = self.password.data, email = self.email.data, confkey = confkey)
 
-                sendMail("no-reply", self.email.data, "Confirm Account! - MineZRC Community", "Do jazz hands, click on the link to confirm your account and join the MineZRC community!!:  "+"http://www.minezrc.com/confirm/"+self.mcname+"/"+confkey)
+                sendMail("no-reply", self.email.data, "Confirm Account! - MineZRC Community", "Do jazz hands, click on the link to confirm your account and join the MineZRC community!!:  "+ app.config['SITEURL'] + "/confirm/"+self.mcname+"/"+confkey)
 
 
                 return True

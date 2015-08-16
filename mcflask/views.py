@@ -37,7 +37,7 @@ def getServers():
 
 
 def getStatus():
-    status = minecraft_status.GetMCStatus('mc.minezrc.com')
+    status = minecraft_status.GetMCStatus(app.config["MCURL"])
     return status
 
 def printstatus():
