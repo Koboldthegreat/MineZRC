@@ -21,7 +21,7 @@ staffmembers = []
 servers= []
 
 
-def addServer(servername,displayname, is_new = False,):
+def addServer(servername,displayname, is_new = False, ):
     servers = Server.objects.all()
     if not any(server.name == servername for server in servers):
         image_url = 'static/img/servers/' + servername + '.png'
@@ -40,7 +40,7 @@ def addPost(title, author, content, tags = None):
     else:
         print("Post with title: " + title + "already exists")
 
-def addUser(ranking, displayname, is_staff = False,email = "Not Set Yet", password = None, confirmed = False, confkey = None):
+def addUser(ranking, displayname, is_staff = False,email = "Not Set Yet", password = None, confirmed = False, confkey = None, panel = False):
     mcname = displayname.lower()
     users = User.objects.all()
     if password:
@@ -48,7 +48,7 @@ def addUser(ranking, displayname, is_staff = False,email = "Not Set Yet", passwo
     else:
         encrypted_password = None
     if not any(user.mcname == mcname for user in users):
-        user = User(ranking = ranking, mcname = mcname, displayname=displayname, is_staff = is_staff, email = email, password = encrypted_password, confirmed = confirmed, confkey = confkey)
+        user = User(ranking = ranking, mcname = mcname, displayname=displayname, is_staff = is_staff, email = email, password = encrypted_password, confirmed = confirmed, confkey = confkey, panel = panel)
         user.save()
         print(mcname + " added to users")
     else:
@@ -70,6 +70,7 @@ class User(db.Document):
     displayname = db.StringField(max_length=50, required=True)
     ranking = db.StringField(max_length=50)
     is_staff = db.BooleanField(default = False)
+    panel = db.BooleanField(default = False)
     confirmed = db.BooleanField(default = False)
     password = db.StringField()
     email = db.StringField()

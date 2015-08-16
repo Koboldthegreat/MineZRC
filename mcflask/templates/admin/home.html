@@ -5,7 +5,6 @@
 
 <div id="spacer"></div>
 
-
 <div class="container">
 <h1>Admin Page</h1>
 
@@ -13,7 +12,7 @@
 
 
   <div class="col-lg-3"><h2><i class="fa fa-newspaper-o"></i> Posts:</h2></div>
-  <div class="col-lg-5">
+  <div class="col-lg-4">
     <h2>
       <div class="btn-group" role="group" aria-label="...">
           <a href= "/admin/post/add"class="btn btn-success"> <i class="fa fa-plus"></i> Add</a>
@@ -21,23 +20,37 @@
       </div>
   </h2>
   </div>
-  <table  class="table table-bordered table-striped">
+  <div class="col-lg-5">
+    <h2>
+   <div class="input-group">
+
+     <input type="text" id="search" class="form-control" id="postautocomplete" placeholder="Title...">
+     <span class="input-group-btn">
+       <button class="btn btn-warning" type="button"><i class="fa fa-pencil"></i> Edit</button>
+       <a href= "#"class="btn btn-primary"><i class="fa fa-times"></i> Remove</a>
+     </span>
+   </div><!-- /input-group -->
+ </div><!-- /.col-lg-6 -->
+
+  <table  class="table table-bordered table-striped" >
     <thead>
       <th>Title</th>
+      <th>Author</th>
       <th>Created</th>
-      <th>Actions</th>
+      <th >Actions</th>
     </thead>
     <tbody>
     {% for post in posts %}
       <tr>
-        <th><a href="#">{{ post.title }}</a></th>
-        <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+        <th><a >{{ post.title }}</a></th>
+        <td>{{post.author.mcname}}</td>
+        <td style="">{{ post.created_at.strftime('%Y-%m-%d') }}</td>
         <td>
-      <div class="btn-group" role="group" aria-label="...">
-        <a href="" class="btn btn-warning"> <i class="fa fa-pencil"></i> Edit</a>
-        <a href=""class="btn btn-danger"><i class="fa fa-times"></i> Remove</a>
+      <div style=""  class="btn-group" role="group" aria-label="...">
+        <a href="/admin/post/edit/{{post.title}}" class="btn btn-warning"> <i class="fa fa-pencil"></i> Edit</a>
+        <a href="/admin/post/delete/{{post.title}}"class="btn btn-danger"><i class="fa fa-times"></i> Remove</a>
       </div>
-    </td>
+     </td>
       </tr>
     {% endfor %}
     </tbody>
@@ -48,20 +61,21 @@
 
 
   <div class="col-lg-3"><h2> <i class="fa fa-users"></i> Users:</h2></div>
-  <div class="col-lg-5">
+  <div class="col-lg-4">
     <h2>
       <div class="btn-group" role="group" aria-label="...">
-          <a href= "#"class="btn btn-success"> <i class="fa fa-user-plus"></i> Add</a>
-          <a href= "#"class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+          <a href= "/register"class="btn btn-success"> <i class="fa fa-user-plus"></i> Add</a>
+
       </div>
   </h2>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-5">
     <h2>
    <div class="input-group">
-     <input type="text" class="form-control" id="usersautocomplete" placeholder="Search for...">
+     <input type="text" id="search" class="form-control" id="usersautocomplete" placeholder="MCname...">
      <span class="input-group-btn">
-       <button class="btn btn-primary" type="button">Search</button>
+       <button href="#" class="btn btn-warning" type="button"><i class="fa fa-pencil"></i> Edit</button>
+       <a href= "#"class="btn btn-primary"><i class="fa fa-times"></i> Remove</a>
      </span>
    </div><!-- /input-group -->
  </div><!-- /.col-lg-6 -->
@@ -78,16 +92,19 @@
     <tr>
       <th><a href="user/{{user.mcname}}">{{ user.mcname }}</a></th>
       <td>{{ user.ranking }}</td>
-      <td>{%if user.is_staff%}
-        <a href= "user/{{user.mcname}}"class="btn btn-success"> <i class="fa fa-times"></i> Remove from staff</a>
+      <td>{% if user.is_staff %}
+        <a href= "/admin/staff/remove/{{user.mcname}}"class="btn btn-danger"> <i class="fa fa-times"></i> Remove from staff</a>
           {% else %}
-          <a href= "user/{{user.mcname}}"class="btn btn-danger"> <i class="fa fa-plus"></i> Add to staff</a>
+          <a href= "/admin/staff/add/{{user.mcname}}"class="btn btn-success"> <i class="fa fa-plus"></i> Add to staff</a>
           {% endif %}
       </td>
       <td>
     <div class="btn-group" role="group" aria-label="...">
-      <a href= "user/{{user.mcname}}"class="btn btn-warning"> <i class="fa fa-pencil"></i> Edit</a>
-      <a href="/user/remove/{{user.mcname }} "class="btn btn-danger"><i class="fa fa-user-times"></i> Remove</a>
+      <a href= "/user/edit/{{user.mcname}}"class="btn btn-warning"> <i class="fa fa-pencil"></i> Edit</a>
+      <a href="/admin/user/delete/{{user.mcname }} "class="btn btn-danger"><i class="fa fa-user-times"></i> Remove</a>
+      {% if not user.confirmed %}
+      <a href="/confirm/{{user.mcname }}/{{user.confkey}} "class="btn btn-success"><i class="fa fa-user-times"></i> Confirm</a>
+      {% endif %}
     </div>
   </td>
     </tr>
@@ -117,28 +134,18 @@
 
 </div>
 
-</div>
+
 
 <div id="spacer"></div>
 <div id="spacer"></div>
 
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 
 
 <script>
-$(function() {
-  var availableUsers = [
-    {%for user in users%}
-    "{{user.mcname}}",
 
-
-    {% endfor %}
-  ];
-$("#usersautocomplete").autocomplete({
-    source: availableUsers
-
-  });
-});
 </script>
+
 
 {% endblock %}

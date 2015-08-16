@@ -14,10 +14,11 @@ import random
 from mcflask.models import User, Server, staffmembers, servers, Post
 from mcflask import app
 from mcflask.functions import geturl
-from mcflask.auth import LoginForm, RegisterForm
+from mcflask.auth import LoginForm, RegisterForm, userEditForm
 
 from flask.ext.wtf import Form
 
+from mcflask.auth import requires_admin
 
 
 
@@ -61,27 +62,25 @@ def home():
     #get staff members
     staffmembers = getUsers('staff')
 
+    posts = Post.objects.all()
 
-    return render_template('homepage.html', status = status, barWidth = barWidth, moderators = staffmembers, background = backgroundurl, page = 'home', loginform = loginform)
+    return render_template('homepage.html', status = status, barWidth = barWidth, moderators = staffmembers, background = backgroundurl, page = 'home', loginform = loginform, posts = posts )
 
-@app.route('/add', methods=['POST'])
-def add_entry():
+@app.route('/post/<title>')
+def viewPost(title):
+
+    backgroundlist = listdir(geturl('static/img/servers'))
+    backgroundurl = "/static/img/servers/" + random.choice(backgroundlist)
+
+    post = Post.objects.get_or_404(title = title)
     loginform = LoginForm()
-    if not session.get('logged_in'):
-        abort(401)
-    form = EntryForm(request.form)
-    if form.validate():
-      g.db.execute('insert into entries (title, text) values (?, ?)', [form.title.data, form.text.data])
-      g.db.commit()
-    flash('New entry was successfully posted')
-    return redirect(url_for('show_entries'))
+    return render_template('post.html', loginform = loginform, post = post, background = backgroundurl)
 
 @app.route('/user/<username>')
 def viewer(username):
 
-    player = globals()[username]
-    skinurl = "img/skin/" + player.mcname + ".png"
-    return render_template('viewer.html', player = player, skinurl = skinurl)
+    player = User.objects.get(mcname = username.lower())
+    return render_template('viewer.html', player = player)
 
 
 @app.route('/play')
@@ -107,6 +106,29 @@ def register():
     backgroundurl = "/static/img/servers/" + random.choice(backgroundlist)
     return render_template("register.html", loginform = loginform, registerform = registerform, background = backgroundurl)
 
+@app.route('/user/edit/<mcname>' , methods = ['GET', 'POST'])
+def userEdit(mcname):
+
+    if session['usermcname'] == mcname or requires_admin:
+        try:
+            user = User.objects.get(mcname = mcname)
+        except:
+            flash(u"User doesn't exist!", "warning")
+            return redirect(url_for('home'))
+        loginform = LoginForm()
+        form = userEditForm()
+        if request.method == 'POST':
+            if form.validate(user = user):
+                flash(u'Successfully edited user: %s' % user.mcname, 'success')
+                return redirect(url_for('home'))
+        backgroundlist = listdir(geturl('static/img/servers'))
+        backgroundurl = "/static/img/servers/" + random.choice(backgroundlist)
+        return render_template("useredit.html", loginform = loginform, form = form, background = backgroundurl, user=user)
+    else:
+        flash(u"You don't have permission to edit this account", 'danger')
+        return redirect(url_for('home'))
+
+
 @app.route('/confirm/<user>/<confkey>')
 def confirm(user, confkey):
     loginform = LoginForm()
@@ -130,17 +152,21 @@ def login():
     if request.method == 'POST':
         loginform = LoginForm()
         if loginform.validate_on_submit():
-            flash(u'Logged in as %s' % loginform.user.mcname, 'success')
-            session['usermcname'] = loginform.user.mcname
-        else:
             if not loginform.confirmed:
                 flash('User not confirmed yet. Please open the confirmation link in your mail.', 'warning')
             else:
-                flash(u'Invalid username or password', 'error')
+
+                flash(u'Logged in as %s' % loginform.user.mcname, 'success')
+                session['usermcname'] = loginform.user.mcname
+                session['panel'] = loginform.user
+        else:
+            flash(u'Invalid username or password', 'error')
         return redirect(url_for('home'))
+    return redirect(url_for('home'))
 
 @app.route('/logout')
 def logout():
     session.pop('usermcname', None)
+    session.pop('panel', False)
     flash(u'You have been succesfully logged out' , 'succes')
     return redirect(url_for('home'))

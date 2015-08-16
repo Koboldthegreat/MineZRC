@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
     <div id="spacer"></div>
-
-      <div class="row " id="serverlist">
+    <div id="serverlist">
+      <div class="row ">
         <h1>THE SERVERS</h1>
       {% for server in servers %}
             <div class="col-md-4 wow fadeInUp " data-wow-delay=".20s">
@@ -10,7 +10,7 @@
 
                     <div class="crop">
                     {% if server.is_new %}
-                    <div class="ribbon wow fadeIn" data-wow-delay="2s">
+                    <div class="ribbon wow swing" data-wow-delay="2s">
                      <h4>New Server!!</h4>
                     </div>
                     {% endif %}
@@ -22,5 +22,5 @@
                 </div>
 
      {% endfor %}
-    </div>
+     </div>
 {% endblock %}

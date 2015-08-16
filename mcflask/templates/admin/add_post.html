@@ -23,8 +23,11 @@
         {% endif %}</h3></div>
         </div>
         <div class="panel-body">
-          <form action="#" method="post">
+          <form id = "addPost" action="#" method="post">
             {{ forms.render(form) }}
+            <script type="text/javascript">
+        CKEDITOR.replace( 'content' );
+      </script>
             <div class="actions">
               <input type="submit" class="btn btn-primary" value="Save">
               <a href="{{ url_for("adminPanel") }}" class="btn btn-secondary">Cancel</a>

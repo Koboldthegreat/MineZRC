@@ -4,17 +4,18 @@
 
 
 
+<div style="background: url({{background}});
+     background-position: left top;
+background-size: cover;
+background-repeat: no-repeat, repeat;
+background-attachment: fixed;
 
+
+">
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
-    <div class="jumbotron" id="background" style="background: url({{background}});
-         background-position: left top;
-  background-size: cover;
-  background-repeat: no-repeat, repeat;
-  background-attachment: fixed;
-
-    ">
+    <div class="jumbotron" id="background" style="background: none;">
       <div class="container jumbotron wow fadeIn" data-wow-delay=".20s" id="home-start">
         <h1 class ="" id="home-title"><img  id="home-logo" src="{{ url_for('static', filename='img/themes/'+config['THEME']+'/logo.png') }}" alt="{{ config['SITENAME' ]}}"</h1>
 
@@ -35,23 +36,27 @@
        </div>
         <div class="col-md-4">
 
+
         </div>
+
       </div>
 
 
       </div>
+      <h1 id="downarrow" style="text-align: center; font-size: 200px; padding: 4vh;"><i class="fa fa-arrow-down wow fadeInDown" ></i></h1>
     </div>
 
 
-    <div class="container">
+<div class="container" id="home-cont">
+<hr>
       <h1>NEWS</h1>
 
-    <div class="row">
-        {% for entry in entries %}
+    <div class="row" id="home-news">
+        {% for post in posts %}
             <div class="col-md-4 ">
-            <h2>{{ entry.title }}</h2>
-            <p>{{ entry.text|safe }}</p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content|striptags|safe|truncate(200) }}</p>
+            <p><a class="btn btn-default" href="/post/{{post.title.replace(" ", "%20")}}" role="button">View details »</a></p>
             </div>
         {% else %}
             <!-- no posts here so far -->
@@ -122,6 +127,11 @@
                 $( "#ifrviewer" ).remove();
             })
 
+            window.setTimeout(function() {
+              $("#downarrow").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+              });
+            }, 2000);
         </script>
 
       {% endfor %}

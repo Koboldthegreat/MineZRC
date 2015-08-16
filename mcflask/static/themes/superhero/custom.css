@@ -1,3 +1,31 @@
+.btn-default{
+	box-shadow: 0px 5px 0px #2E3741;
+}
+
+.btn-primary{
+	box-shadow: 0px 5px 0px #B15315;
+}
+
+#search {
+	box-shadow: 0px 5px 0px #4E5D6C;
+
+}
+
+.btn-success{
+	box-shadow: 0px 5px 0px #449D44;
+}
+.btn-warning{
+	box-shadow: 0px 5px 0px #EC971F;
+}
+.btn-danger{
+	box-shadow: 0px 5px 0px #C9302C;
+}
+
+.btn{
+	border: 1px solid transparent;
+	margin-bottom: 3px;
+
+}
 .navbar {
     font-size: 17px;
 }
@@ -18,6 +46,18 @@ form label{
 
 }
 
+#layout-logset .btn{
+	width: 100%;
+	margin: 2px 0px;
+
+}
+
+#post p{
+	font-size: 20px;
+
+
+}
+
 #register #username,
 #register #email,
 #register #password,
@@ -32,44 +72,15 @@ form label{
 
 #flash{
   list-style-type: none;
-  width: 500px;
+  width: 35%;
   position: fixed;
   top: 100px;
   text-align: center !important;
   left: 50%;
-  margin-left: -250px;
+  margin-left: -17.5%;
 }
 
-.ribbon {
-  background-color: #a00;
-  overflow: hidden;
-  white-space: nowrap;
-  /* top left corner */
-  position: absolute;
-  left: -25px;
-  top: 130px;
-  /* 45 deg ccw rotation */
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  /* shadow */
-  -webkit-box-shadow: 0 0 10px #888;
-  -moz-box-shadow: 0 0 10px #888;
-box-shadow: 0 0 10px #888;
-}
-.ribbon h4 {
-  border: 1px solid #faa;
-  color: #fff;
-  display: block;
-  margin: 1px 0;
-  padding: 10px 50px;
-  text-align: center;
-  text-decoration: none;
-  /* shadow */
-  text-shadow: 0 0 5px #444;
-}
+
 
 #serverlist h1{
   margin-top: 30px;
@@ -166,8 +177,18 @@ h1, h2, {    text-transform: uppercase;}
 
 
 }
+#home-cont{
+	 width: 70%;
+	 padding: 0px 5%;
+	 background-color: #2B3E50;
+	 box-shadow: 0px 5px 0px #5CB85C;
 
+}
 
+@media (max-width:600px) {
+		#home-cont{width:100%;}
+
+}
 
 #home-title {
  margin: 10px;
@@ -187,8 +208,8 @@ h1, h2, {    text-transform: uppercase;}
 #home-start {
   background-color: #2B3E50;
   margin-top: 20vh;
-  border-radius: 25px;
   padding: 20px;
+  border-bottom: 10px solid #5CB85C;
 }
 
 #home-staff {
@@ -208,6 +229,11 @@ h1, h2, {    text-transform: uppercase;}
 
 }
 
+#addPost #content{
+	resize: vertical;
+	overflow: auto;
+}
+
 #account .btn{
 	margin-top: 5px;
 }
@@ -225,6 +251,7 @@ h1, h2, {    text-transform: uppercase;}
     margin-top: -40px;
 
 
+
 }
 
 {
@@ -233,6 +260,25 @@ h1, h2, {    text-transform: uppercase;}
 }
 
 #spacer {height: 80px;}
+
+#content {
+  padding:15px;
+}
+#content img {
+  width: 100%;
+}
+
+#home-news img{
+    width: 100%;
+}
+
+#menu-ip{
+	box-shadow: None;
+  text-transform: uppercase;
+	margin-bottom: 0px;
+
+}
+
 
 .navbar-fixed-top .navbar-brand {
 
@@ -250,6 +296,69 @@ h1, h2, {    text-transform: uppercase;}
     font-size: 1.1em;
 }
 
+
+.ribbon {
+  background-color: #a00;
+  overflow: hidden;
+  white-space: nowrap;
+  /* top left corner */
+  position: absolute;
+  left: -25px;
+  top: 130px;
+  /* 45 deg ccw rotation */
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  /* shadow */
+  -webkit-box-shadow: 0 0 20px #2b2727;
+  -moz-box-shadow: 0 0 20px #2b2727;
+box-shadow: 0 0 20px #2b2727;
+}
+.ribbon h4 {
+  border: 1px solid #faa;
+  color: #fff;
+  display: block;
+  margin: 1px 0;
+  padding: 10px 50px;
+  text-align: center;
+  text-decoration: none;
+  /* shadow */
+  text-shadow: 0 0 5px #444;
+}
+
+.userribbon {
+  background-color: #a00;
+  overflow: hidden;
+  white-space: nowrap;
+  /* top left corner */
+  position: absolute;
+  left: 5px;
+  top: 120px;
+  /* 45 deg ccw rotation */
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  /* shadow */
+  -webkit-box-shadow: 0 0 20px #2b2727;
+  -moz-box-shadow: 0 0 20px #2b2727;
+box-shadow: 0 0 20px #2b2727;
+}
+
+.userribbon h4 {
+  border: 1px solid #faa;
+  color: #fff;
+  display: block;
+  margin: 1px 0;
+  padding: 5px 45px;
+  text-align: center;
+  text-decoration: none;
+  /* shadow */
+  text-shadow: 0 0 10px #1c1919;
+}
 
 ::-webkit-input-placeholder {
    text-transform: capitalize;
