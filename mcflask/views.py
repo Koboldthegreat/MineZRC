@@ -58,6 +58,7 @@ def home():
       status = getStatus()
       barWidth = int(status[2]) / int(status[3]) * 100
     except:
+      status = False
       barWidth = False
     backgroundlist = listdir(geturl('static/img/servers'))
     backgroundurl = "/static/img/servers/" + random.choice(backgroundlist)
