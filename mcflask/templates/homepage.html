@@ -28,24 +28,22 @@ background-attachment: fixed;
             <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow=" {{ status[2] }}" aria-valuemin="0" aria-valuemax="{{ status[3] }}" style="width: {{ barWidth }}%;">
                 <span class="sr-only">{{barwidth}}%</span>
             </div>
+        </div>
 	{% else %}
 	    <h2 class="" id="home-title">Players online: <strong style="font-size: 25px;"> Server Data not available at the moment</strong></h2>
-	    </div>
+      <hr>
+  {% endif %}
 
-	{% endif %}
-        </div>
+
         <div class="row">
-        <div class="col-md-4 ">
+        <div class="col-md-3 ">
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <a class="btn btn-primary btn-lg text-center btn-block wow rubberBand" data-wow-delay="1s" href="/register" role="button" onClick="copyToClipboard('{{config['URL' ]}}')">Join MineZRC»</a>
        </div>
-        <div class="col-md-4">
 
-
-        </div>
-
+     </div>
       </div>
 
 

@@ -23,7 +23,7 @@ def ping(host, port, results = None):
     return False
 
 
-def GetMCStatus(hostname, port=25565, timeout=0.5):
+def GetMCStatus(hostname, port=25565, timeout=2):
   """Query a minecraft beta server.
 
   Args:
