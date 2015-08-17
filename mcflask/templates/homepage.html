@@ -20,12 +20,19 @@ background-attachment: fixed;
         <h1 class ="" id="home-title"><img  id="home-logo" src="{{ url_for('static', filename='img/themes/'+config['THEME']+'/logo.png') }}" alt="{{ config['SITENAME' ]}}"</h1>
 
         <p class="" id="home-slogan">{{config['SLOGAN' ]}}</p>
+	{% if barWidth%}
         <h2 class="" id="home-title">Players online: <strong> {{ status[2] }} / {{ status[3] }}</strong></h2>
 
         <div class="progress">
+	
             <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow=" {{ status[2] }}" aria-valuemin="0" aria-valuemax="{{ status[3] }}" style="width: {{ barWidth }}%;">
                 <span class="sr-only">{{barwidth}}%</span>
             </div>
+	{% else %}
+	    <h2 class="" id="home-title">Players online: <strong style="font-size: 25px;"> Server Data not available at the moment</strong></h2>
+	    </div>
+
+	{% endif %}
         </div>
         <div class="row">
         <div class="col-md-4 ">

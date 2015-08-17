@@ -54,8 +54,11 @@ def printstatus():
 @app.route("/")
 def home():
     loginform = LoginForm()
-    status = getStatus()
-    barWidth = int(status[2]) / int(status[3]) * 100
+    try:
+      status = getStatus()
+      barWidth = int(status[2]) / int(status[3]) * 100
+    except:
+      barWidth = False
     backgroundlist = listdir(geturl('static/img/servers'))
     backgroundurl = "/static/img/servers/" + random.choice(backgroundlist)
 
