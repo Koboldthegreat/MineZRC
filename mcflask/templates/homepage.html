@@ -20,7 +20,7 @@ background-attachment: fixed;
         <h1 class ="" id="home-title"><img  id="home-logo" src="{{ url_for('static', filename='img/themes/'+config['THEME']+'/logo.png') }}" alt="{{ config['SITENAME' ]}}"</h1>
 
         <p class="" id="home-slogan">{{config['SLOGAN' ]}}</p>
-	{% if barWidth%}
+	{% if status[0]%}
         <h2 class="" id="home-title">Players online: <strong> {{ status[2] }} / {{ status[3] }}</strong></h2>
 
         <div class="progress">
@@ -30,7 +30,7 @@ background-attachment: fixed;
             </div>
         </div>
 	{% else %}
-	    <h2 class="" id="home-title">Players online: <strong style="font-size: 25px;"> Server Data not available at the moment</strong></h2>
+	    <h2 class="" id="home-title">Players online: <strong style="color: #D9534F; "> Server is offline!</strong></h2>
       <hr>
   {% endif %}
 

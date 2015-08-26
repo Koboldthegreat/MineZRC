@@ -179,3 +179,26 @@ def adminEditPost(title):
     else:
         flash('You have to be logged as admin to access this page ', 'warning')
         return redirect('/')
+
+@app.route('/admin/rank/edit/<mcname>', methods = ['GET', 'POST'])
+def adminEditRank(mcname):
+    if requires_admin():
+        try:
+            user = User.objects.get(mcname = mcname)
+            backgroundlist = listdir(geturl('static/img/servers'))
+            backgroundurl = "/static/img/servers/" + random.choice(backgroundlist)
+            if request.method == 'POST':
+                request.form['ranks']
+                user.update(is_staff = True)
+                flash(u'Added %s to Staff ' % user.mcname, 'warning')
+                flash(u'Successfully edited Ranking of: %s. ' % mcname, 'success')
+                return redirect(url_for('adminPanel'))
+            else:
+                return render_template('admin/edit_rank.html', user = user, background = backgroundurl)
+
+        except:
+            flash(u'MCname not valid!', 'danger')
+        return redirect(url_for('adminPanel'))
+    else:
+        flash('You have to be logged as admin to access this page ', 'warning')
+        return redirect('/')
