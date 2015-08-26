@@ -188,10 +188,9 @@ def adminEditRank(mcname):
             backgroundlist = listdir(geturl('static/img/servers'))
             backgroundurl = "/static/img/servers/" + random.choice(backgroundlist)
             if request.method == 'POST':
-                request.form['ranks']
-                user.update(is_staff = True)
-                flash(u'Added %s to Staff ' % user.mcname, 'warning')
-                flash(u'Successfully edited Ranking of: %s. ' % mcname, 'success')
+                user.update(ranking = request.form['ranks'])
+                flash(u'Edited Ranking of: %s. ' % mcname, 'success')
+
                 return redirect(url_for('adminPanel'))
             else:
                 return render_template('admin/edit_rank.html', user = user, background = backgroundurl)

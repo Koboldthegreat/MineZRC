@@ -91,7 +91,7 @@
   {% for user in users %}
     <tr>
       <th><a href="user/{{user.mcname}}">{{ user.mcname }}</a></th>
-      <td>{{ user.ranking }}</td>
+      <td><a href="/admin/rank/edit/{{user.mcname}}" class="btn btn-warning"> <i class="fa fa-pencil"></i> {{user.ranking}}</a> </td>
       <td>{% if user.is_staff %}
         <a href= "/admin/staff/remove/{{user.mcname}}"class="btn btn-danger"> <i class="fa fa-times"></i> Remove from staff</a>
           {% else %}

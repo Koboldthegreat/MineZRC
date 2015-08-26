@@ -94,6 +94,18 @@ form label{
 
 .serverimg{
     height: 419px;
+
+		-webkit-transition: all .5s ease;
+     -moz-transition: all .5s ease;
+       -o-transition: all .5s ease;
+      -ms-transition: all .5s ease;
+          transition: all .5s ease;
+}
+
+.serverimg:hover{
+		height: 450px;
+		margin: -75px 0 0 -130px;
+		cursor: pointer;
 }
 
 .crop {

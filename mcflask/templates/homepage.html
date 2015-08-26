@@ -16,7 +16,7 @@ background-attachment: fixed;
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
     <div class="jumbotron" id="background" style="background: none;">
-      <div class="container jumbotron wow fadeIn" data-wow-delay=".20s" id="home-start">
+      <div class="container jumbotron" id="home-start">
         <h1 class ="" id="home-title"><img  id="home-logo" src="{{ url_for('static', filename='img/themes/'+config['THEME']+'/logo.png') }}" alt="{{ config['SITENAME' ]}}"</h1>
 
         <p class="" id="home-slogan">{{config['SLOGAN' ]}}</p>
@@ -40,7 +40,7 @@ background-attachment: fixed;
 
         </div>
         <div class="col-md-6">
-          <a class="btn btn-primary btn-lg text-center btn-block wow rubberBand" data-wow-delay="1s" href="/register" role="button" onClick="copyToClipboard('{{config['URL' ]}}')">Join MineZRC»</a>
+          <a class="btn btn-primary btn-lg text-center btn-block wow rubberBand" data-wow-delay="1s" href="/register" role="button" onClick="copyToClipboard('{{config['MCURL']}}')">Join MineZRC»</a>
        </div>
 
      </div>
