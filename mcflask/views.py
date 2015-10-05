@@ -161,7 +161,7 @@ def login():
 
                 flash(u'Logged in as %s' % loginform.user.mcname, 'success')
                 session['usermcname'] = loginform.user.mcname
-                session['panel'] = loginform.user
+                session['panel'] = loginform.user.panel
         else:
             flash(u'Invalid username or password', 'error')
         return redirect(url_for('home'))
