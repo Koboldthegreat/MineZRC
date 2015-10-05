@@ -95,7 +95,7 @@ def adminAddStaff(mcname):
         try:
             user = User.objects.get(mcname = mcname)
             user.update(is_staff = True)
-            flash(u'Added %s to Staff ' % user.mcname, 'warning')
+            flash(u'Added %s to Staff ' % user.mcname, 'warning')sudo start myproject
         except:
             flash(u'MCname not valid!', 'danger')
         return redirect(url_for('adminPanel'))
@@ -200,4 +200,4 @@ def adminEditRank(mcname):
         return redirect(url_for('adminPanel'))
     else:
         flash('You have to be logged as admin to access this page ', 'warning')
-        return redirect('/')
+        return redirect('www.google.com')

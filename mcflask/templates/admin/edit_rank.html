@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% import "_forms.html" as forms %}
+
+{% block body %}
+
+
+  <div class="jumbotron" style="background: url({{background}});
+       background-position: left top;
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  background-attachment: fixed;
+
+  ">
+    <div class="container" id="register-start" style="width: 800px;">
+      <div class="panel panel-info" >
+
+        <div class="panel-heading">
+        <div class="panel-title"> <h3> <i class="fa fa-users"></i>
+          Edit Ranks of: <strong>{{user.mcname}}</strong></h3></div>
+        </div>
+        <div class="panel-body">
+          <form id = "addPost" action="/admin/rank/edit/{{user.mcname}}" method="post">
+            <div class="form-group">
+              <p for="pwd">Seperate multiple ranks with comma!</p>
+              <label for="pwd">Ranks:</label>
+              <input type="text" class="form-control" name="ranks" value = "{{user.ranking}}">
+            </div>
+            <div class="actions">
+              <input type="submit" class="btn btn-primary" value="Save">
+              <a href="{{ url_for("adminPanel") }}" class="btn btn-secondary">Cancel</a>
+            </div>
+
+          </form>
+      </div>
+      </div>
+
+    </div>
+
+
+    </div>
+{% endblock %}
