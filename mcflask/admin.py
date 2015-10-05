@@ -95,7 +95,7 @@ def adminAddStaff(mcname):
         try:
             user = User.objects.get(mcname = mcname)
             user.update(is_staff = True)
-            flash(u'Added %s to Staff ' % user.mcname, 'warning')sudo start myproject
+            flash(u'Added %s to Staff ' % user.mcname, 'warning')
         except:
             flash(u'MCname not valid!', 'danger')
         return redirect(url_for('adminPanel'))
