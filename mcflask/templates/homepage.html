@@ -19,7 +19,7 @@ background-attachment: fixed;
       <div class="container jumbotron" id="home-start">
         <h1 class ="" id="home-title"><img  id="home-logo" src="{{ url_for('static', filename='img/themes/'+config['THEME']+'/logo.png') }}" alt="{{ config['SITENAME' ]}}"</h1>
 
-        <p class="" id="home-slogan">{{config['SLOGAN' ]}}</p>
+        <p class="" id="home-slogan">{{config['SLOGAN']|safe}}</p>
 	{% if status[0]%}
         <h2 class="" id="home-title">Players online: <strong> {{ status[2] }} / {{ status[3] }}</strong></h2>
 
